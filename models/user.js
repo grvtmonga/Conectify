@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const { stringify } = require('querystring');
 
 const userSchema= new mongoose.Schema({
-    email_ID :{
+    email :{
         type : String,
         required: true,
         unique: true,
     },
-    pwd:{
+    password:{
         type:String,
         required:true,
     },

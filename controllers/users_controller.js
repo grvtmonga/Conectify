@@ -7,6 +7,10 @@ module.exports.profile = function(req, res){
 }
 // render sign up page
 module.exports.signUp = function(req,res){
+
+    // if(req.isAuthenticated){
+    //     return res.redirect('/users/profile')
+    // }
     res.render('sign_up',{
         title: 'Connectify | Sign Up'
     })
@@ -14,6 +18,9 @@ module.exports.signUp = function(req,res){
 
 // render sign in page
 module.exports.signIn = function(req,res){
+    // if(req.isAuthenticated){
+    //    return  res.redirect('/users/profile')
+    // }
     return res.render('sign_in', {
         title: "Coneetify | Sign In"
     });
@@ -21,12 +28,12 @@ module.exports.signIn = function(req,res){
 
 //get the sign up data
 module.exports.create = async (req, res) => {
-    if (req.body.pwd !== req.body.confirm_pwd) {
+    if (req.body.password !== req.body.confirm_pwd) {
         return res.redirect('back');
     }
 
     try {
-        const existingUser = await User.findOne({ email_ID: req.body.email_ID });
+        const existingUser = await User.findOne({ email: req.body.email });
 
         if (!existingUser) {
             const newUser = await User.create(req.body);
@@ -43,5 +50,19 @@ module.exports.create = async (req, res) => {
 
 // sign in and create a session for user
 module.exports.createSession = function(req,res){
-    //todo
+    // if(passport.checkAuthentication){
+
+    // }
+    return res.redirect('/')
 }
+
+module.exports.destroySession = (req, res) => {
+    req.logout(function(err) {
+        if (err) { 
+            console.log('error in logging out')
+            return next(err); }
+        });
+  
+    return res.redirect('/');
+  };
+  

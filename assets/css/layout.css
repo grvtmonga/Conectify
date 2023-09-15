@@ -1,5 +1,18 @@
 body{
-    margin: 0;
+    margin: 10px;
     text-align: center;
-    background-color: antiquewhite;
+    background-image: url('../images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#title-name{
+    display: inline-flex;
 }

@@ -1,3 +1,26 @@
 <header>
-    Page Header
+    <ul>
+        <li id="title-name">
+            
+                <img src="/images/logo.png" width="90" height="80">
+                <div>
+                    <h1>Connectify</h1>
+                    <p>Connection Matters</p>
+                </div>
+        </li>
+        <li>
+            <input type="search" name="search" placeholder="Search...">
+        </li>
+        <% if(locals.user){  %>
+            <li><a href="/users/profile"><%= user.fname %> <%= user.lname %></a></li>
+            <li>
+                <a href="/users/sign-out">Sign Out</a>
+            </li>
+        <% }else{ %>
+            <li>
+                <a href="/users/sign-in"> Sign In</a>
+                <a href="/users/sign-UP"> Sign Up</a>
+            </li>
+        <% } %>
+    </ul>
 </header>
