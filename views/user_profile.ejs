@@ -2,4 +2,22 @@
 <h1>
     Codeial / Profile Page
 </h1>
-<p>Full Name : <%=user.fname  %> <%= user.lname  %></p>
+
+<% if(user.id==profile_user.id){ %>
+    <p>Full Name : <%=profile_user.fname  %> <%= profile_user.lname  %></p>
+    <p>Email ID: <%= profile_user.email  %></p>
+    <h3>About me:</h3>
+    <p><%= profile_user.bio  %></p>
+    <form action="/users/update/<%=profile_user.id%>" method="post">
+        <input type="text" name="fname" placeholder="Want to change your first name" value="<%= profile_user.fname %>" required>
+        <input type="text" name="lname" placeholder="Want to change your last name" value="<%= profile_user.lname  %>" >
+        <input type="email" name="email" placeholder="Wanna change Email ID" value="<%= profile_user.email %>" required >
+        <br>
+        <textarea type="text" name="bio" placeholder="Add your bio" cols="30"  rows="3"></textarea>
+        <input type="submit" value="save changes">
+    </form>
+<% }else{ %>
+
+    <p>Full Name : <%=profile_user.fname  %> <%= profile_user.lname  %></p>
+    <p>Email ID: <%= profile_user.email  %></p>
+<% } %>

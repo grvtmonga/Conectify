@@ -16,3 +16,7 @@ header ul{
 #title-name{
     display: inline-flex;
 }
+#post-container{
+    border: 2px black solid;
+    margin:5px
+}

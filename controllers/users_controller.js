@@ -1,9 +1,29 @@
 const User = require('../models/user')
 
-module.exports.profile = function(req, res){
-    return res.render('user_profile', {
-        title: 'User Profile'
+module.exports.profile = async function(req, res){
+    try{
+        const user = await User.findById(req.params.id)
+        return res.render('user_profile', {
+            title: 'User Profile',
+            profile_user:user
     })
+    }
+    catch(err){
+        console.log('error in profile rendering ',err)
+    }
+    }
+module.exports.update = async (req,res) =>{
+    console.log('in exports')
+    try{
+        if(req.user.id==req.params.id){
+            
+            await User.findByIdAndUpdate(req.params.id,req.body)
+            // console.log(user)
+            return res.redirect('back')
+        }
+    }catch(err){
+        console.log('error in updating profile',err)
+    }
 }
 // render sign up page
 module.exports.signUp = function(req,res){

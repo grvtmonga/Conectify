@@ -19,6 +19,9 @@ const userSchema= new mongoose.Schema({
     lname:{
         type:String,
         
+    },
+    bio:{
+        type:String,
     }
 }, {
     timestamps:true,

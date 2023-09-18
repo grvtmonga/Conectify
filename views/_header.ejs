@@ -1,18 +1,19 @@
 <header>
     <ul>
         <li id="title-name">
-            
+                <a href="/">
                 <img src="/images/logo.png" width="90" height="80">
                 <div>
                     <h1>Connectify</h1>
                     <p>Connection Matters</p>
                 </div>
+                </a>    
         </li>
         <li>
             <input type="search" name="search" placeholder="Search...">
         </li>
         <% if(locals.user){  %>
-            <li><a href="/users/profile"><%= user.fname %> <%= user.lname %></a></li>
+            <li><a href="/users/profile/<%= user.id %>"><%= user.fname %> <%= user.lname %></a></li>
             <li>
                 <a href="/users/sign-out">Sign Out</a>
             </li>
